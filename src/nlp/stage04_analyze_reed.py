@@ -269,7 +269,7 @@ def run_analyze(
     _plot_top_tokens(
         tokens=tokens,
         top_n=top_n,
-        output_path=output_dir / "case_top_tokens.png",
+        output_path=output_dir / "reed_top_tokens.png",
         title=f"Top {top_n} Tokens: {title}",
         LOG=LOG,
     )
@@ -291,7 +291,7 @@ def run_analyze(
 
     _plot_wordcloud(
         text=tokens_str,
-        output_path=output_dir / "case_wordcloud.png",
+        output_path=output_dir / "reed_wordcloud.png",
         title=f"Word Cloud: {title}",
         LOG=LOG,
     )
