@@ -47,10 +47,22 @@ from datafun_toolkit.logger import get_logger, log_header, log_path
 
 from nlp.config_reed import (
     DATA_PATH,
+    HTTP_REQUEST_HEADERS,
+    PAGE_URL,
+    PROCESSED_CSV_PATH,
     PROCESSED_PATH,
     RAW_PATH,
     ROOT_PATH,
+    PDF_PATH,
+    TEXT_PATH,
+    CLEANED_TEXT_PATH,
 )
+
+from nlp.stage01_extract_reed import run_extract
+from nlp.stage02_validate_reed import run_validate
+from nlp.stage03_transform_reed import run_transform
+from nlp.stage04_analyze_reed import run_analyze
+from nlp.stage05_load import run_load
 
 # ============================================================
 # Section 2. Configure Logging
@@ -77,31 +89,35 @@ def main() -> None:
     log_path(LOG, "PROCESSED_PATH", PROCESSED_PATH)
 
     # EXTRACT
-    # html_content = run_extract(
-    #     source_url=PAGE_URL,
-    #     http_request_headers=HTTP_REQUEST_HEADERS,
-    #     pdf_path=PDF_PATH,
-    #     text_path=TEXT_PATH,
-    #     LOG=LOG,
-    # )
+    run_extract(
+        source_url=PAGE_URL,
+        http_request_headers=HTTP_REQUEST_HEADERS,
+        pdf_path=PDF_PATH,
+        text_path=TEXT_PATH,
+        LOG=LOG,
+    )
 
-    # # VALIDATE
-    # validated_soup = run_validate(
-    #     html_content=html_content,
-    #     LOG=LOG,
-    # )
+    # VALIDATE
+    headings, cleaned_headings = run_validate(
+        LOG=LOG,
+        text_path=TEXT_PATH
+    )
 
-    # # TRANSFORM
-    # df = run_transform(
-    #     soup=validated_soup,
-    #     LOG=LOG,
-    # )
+    # TRANSFORM
+    df, corpus = run_transform(
+        LOG=LOG,
+        text_path=TEXT_PATH,
+        cleaned_text_path=CLEANED_TEXT_PATH,
+        headings=headings,
+        cleaned_headings=cleaned_headings
+    )
 
-    # # ANALYZE
-    # run_analyze(
-    #     df=df,
-    #     LOG=LOG,
-    # )
+    # ANALYZE
+    run_analyze(
+        df=df,
+        corpus=corpus,
+        LOG=LOG,
+    )
 
     # # LOAD
     # run_load(

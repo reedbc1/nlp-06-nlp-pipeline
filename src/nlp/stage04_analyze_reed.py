@@ -201,6 +201,7 @@ def _plot_wordcloud(
 
 def run_analyze(
     df: pd.DataFrame,
+    corpus: str,
     LOG: logging.Logger,
     output_dir: Path = Path("data/processed"),
     top_n: int = 20,
@@ -230,26 +231,14 @@ def run_analyze(
     LOG.info("PHASE 4.1: Extract tokens and summary statistics")
     LOG.info("========================")
 
-    # Get the first (and only) row
-    row = df.iloc[0]
-
-    title: str = str(row.get("title", "unknown"))
-    tokens_str: str = str(row.get("tokens", ""))
-    token_count: int = int(row.get("token_count", 0))
-    unique_token_count: int = int(row.get("unique_token_count", 0))
-    type_token_ratio: float = float(row.get("type_token_ratio", 0.0))
-    abstract_word_count: int = int(row.get("abstract_word_count", 0))
-    author_count: int = int(row.get("author_count", 0))
-
     # Split the space-joined token string back into a list
-    tokens: list[str] = tokens_str.split() if tokens_str else []
+    tokens: list[str] = corpus.split() if corpus else []
+    unique_tokens: set = set(tokens)
+    tokens_str = " ".join(tokens)
 
-    LOG.info(f"  Paper: {title}")
-    LOG.info(f"  Abstract word count (raw):    {abstract_word_count}")
-    LOG.info(f"  Token count (clean):          {token_count}")
-    LOG.info(f"  Unique token count:           {unique_token_count}")
-    LOG.info(f"  Type-token ratio:             {type_token_ratio}")
-    LOG.info(f"  Author count:                 {author_count}")
+    LOG.info(f"  Abstract word count (raw):    {len(df["Abstract"])}")
+    LOG.info(f"  Token count (clean):          {len(tokens)}")
+    LOG.info(f"  Unique token count:           {len(unique_tokens)}")
 
     # ============================================================
     # Phase 4.2: Frequency distribution - bar chart
@@ -270,7 +259,7 @@ def run_analyze(
         tokens=tokens,
         top_n=top_n,
         output_path=output_dir / "reed_top_tokens.png",
-        title=f"Top {top_n} Tokens: {title}",
+        title=f"Top {top_n} Tokens:",
         LOG=LOG,
     )
 
@@ -292,7 +281,7 @@ def run_analyze(
     _plot_wordcloud(
         text=tokens_str,
         output_path=output_dir / "reed_wordcloud.png",
-        title=f"Word Cloud: {title}",
+        title="Word Cloud: Attention is All You Need - Full",
         LOG=LOG,
     )
 

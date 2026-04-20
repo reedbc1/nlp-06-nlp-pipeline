@@ -136,23 +136,6 @@ nlp = spacy.load("en_core_web_sm")
 # ============================================================
 
 
-def _get_text(element: Tag | None, strip_prefix: str = "", separator: str = "") -> str:
-    """Return element text or 'unknown' if element is None.
-
-    Args:
-        element (Tag | None): A BeautifulSoup Tag or None.
-        strip_prefix (str): Text prefix to remove from the result.
-        separator (str): Separator for get_text(); empty string by default.
-
-    Returns:
-        str: Extracted and cleaned text, or 'unknown' if element is None.
-    """
-    if element is None:
-        return "unknown"
-    text = element.get_text(separator=separator, strip=True)
-    return text.replace(strip_prefix, "").strip() if strip_prefix else text
-
-
 def _clean_text(text: str, nlp_model: spacy.language.Language) -> str:
     """Clean and normalize a text string for NLP analysis.
 
@@ -208,238 +191,41 @@ def _clean_text(text: str, nlp_model: spacy.language.Language) -> str:
 
 
 def run_transform(
-    soup: BeautifulSoup,
     LOG: logging.Logger,
-) -> pd.DataFrame:
-    """Transform HTML into a clean, analysis-ready DataFrame.
+    text_path,
+    cleaned_text_path,
+    headings,
+    cleaned_headings
+):
 
-    Args:
-        soup (BeautifulSoup): Validated BeautifulSoup object.
-        LOG (logging.Logger): The logger instance.
+    # divide text into sections by header
+    sections = {}
+    for heading in cleaned_headings:
+        sections[heading] = ""
 
-    Returns:
-        pd.DataFrame: The transformed and analysis-ready dataset.
-    """
-    LOG.info("========================")
-    LOG.info("STAGE 03: TRANSFORM starting...")
-    LOG.info("========================")
+    with open(text_path, "r", encoding="utf-8") as file:
+        i = 0
+        start_adding = False
+        max_idx = len(headings) - 1
 
-    LOG.info("Extracting metadata from HTML")
-    LOG.info(
-        "We must manually inspect the HTML structure to identify the fields we want to extract."
-    )
-    LOG.info(
-        "For this arXiv page, we can extract:"
-        "\n- Title from <h1 class='title'>"
-        "\n- Authors from <div class='authors'>"
-        "\n- Abstract from <blockquote class='abstract'>"
-        "\n- Primary subject from <div class='subheader'>"
-        "\n- Submission date from <div class='dateline'>"
-        "\n- ArXiv ID from canonical link"
-    )
-    LOG.info("Replace any missing content with `unknown` to ensure all are strings.")
+        for line in file:
+            if line == headings[0]:
+                start_adding = True
+            if start_adding:
+                if i < max_idx:
+                    if line == headings[i + 1]:
+                        i += 1
+                sections[cleaned_headings[i]] += line + " "
 
-    LOG.info("========================")
-    LOG.info("PHASE 3.1: Extract raw fields from HTML")
-    LOG.info("========================")
+    # clean sections
+    cleaned_sections = {}
+    for key in sections.keys():
+        cleaned_sections[key] = _clean_text(sections[key], nlp)
 
-    # Extract fields using the same approach as Module 5.
-    # See nlp-06-nlp-pipeline/src/nlp/stage03_transform_case.py for full explanation.
-    # Code is refactored to use the internal function _get_text() helper.
+    df = pd.DataFrame([cleaned_sections])
 
-    LOG.info("Inspect: does the raw data look right?")
-    LOG.info("Look at the logged output. Does anything look surprising?")
-    LOG.info("That is the first signal that cleaning is needed.")
-    LOG.info("========================")
+    corpus = ""
+    for key in sections:
+        corpus += cleaned_sections[key]
 
-    # Extract fields using the same approach as Module 5.
-    # See nlp-06-nlp-pipeline/src/nlp/stage03_transform_case.py for full explanation.
-
-    LOG.info("------------------------")
-    LOG.info("Project specific: Extract title, authors, abstract")
-    LOG.info("------------------------")
-
-    title_tag: Tag | None = soup.find("h1", class_="title")
-    title: str = _get_text(title_tag, strip_prefix="Title:")
-    LOG.info(f"Extracted title: {title}")
-
-    authors_tag: Tag | None = soup.find("div", class_="authors")
-    author_tags_list: list[Tag] = authors_tag.find_all("a") if authors_tag else []
-    authors: str = (
-        ", ".join([tag.get_text(strip=True) for tag in author_tags_list])
-        .replace("Authors:", "")
-        .strip()
-        if authors_tag
-        else "unknown"
-    )
-    LOG.info(f"Extracted authors: {authors}")
-
-    abstract_tag: Tag | None = soup.find("blockquote", class_="abstract")
-    abstract_raw: str = _get_text(abstract_tag, strip_prefix="Abstract:")
-    LOG.info(f"Extracted abstract: {abstract_raw[:100]}...")
-
-    LOG.info("------------------------")
-    LOG.info("Project specific: Extract subjects from subheader")
-    LOG.info("------------------------")
-
-    # Primary subject from <div class="subheader">
-    subheader: Tag | None = soup.find("div", class_="subheader")
-
-    # Subjects may be in the format "Subjects: cs.AI (primary); cs.LG; stat.ML"
-    subjects: str = _get_text(subheader, strip_prefix="Subjects:")
-    LOG.info(f"Extracted subjects: {subjects}")
-
-    LOG.info("------------------------")
-    LOG.info("Project specific: Extract submission date from dateline")
-    LOG.info("------------------------")
-
-    # Submission date from <div class="dateline">
-    dateline: Tag | None = soup.find("div", class_="dateline")
-    date_submitted_str: str = _get_text(dateline)
-    LOG.info(f"Extracted submission date: {date_submitted_str}")
-
-    LOG.info("------------------------")
-    LOG.info("Project specific: Extract arxiv_id from canonical link")
-    LOG.info("------------------------")
-
-    # The canonical link looks like this in the HTML <head>:
-    #   <link rel="canonical" href="https://arxiv.org/abs/2602.20021"/>"
-    canonical: Tag | None = soup.find("link", rel="canonical")
-
-    if canonical is None:
-        LOG.warning("Canonical link not found, setting arXiv ID to 'unknown'")
-        arxiv_id: str = "unknown"
-    else:
-        href: str = str(canonical["href"])
-        arxiv_id: str = href.split("/abs/")[-1]
-
-    LOG.info(f"Extracted arxiv_id: {arxiv_id}")
-
-    LOG.info("========================")
-    LOG.info("PHASE 3.2: Clean and normalize text fields")
-    LOG.info("========================")
-    # This phase cleans the raw abstract text.
-    # The _clean_text() helper documents each cleaning decision and
-    # its tradeoffs. Read it before modifying.
-
-    LOG.info("Inspect: compare abstract_raw to abstract_clean in the log.")
-    LOG.info("Did we remove anything we should have kept?")
-    LOG.info("Is there still noise that cleaning missed?")
-    LOG.info("========================")
-
-    abstract_clean: str = (
-        _clean_text(abstract_raw, nlp) if abstract_raw != "unknown" else "unknown"
-    )
-
-    # Log before and after to make the cleaning effect visible
-    LOG.info(f"  abstract (raw):   {abstract_raw[:120]}...")
-    LOG.info(f"  abstract (clean): {abstract_clean[:120]}...")
-    LOG.info(
-        f"  characters removed: {len(abstract_raw) - len(abstract_clean)} "
-        f"({100 * (1 - len(abstract_clean) / max(len(abstract_raw), 1)):.1f}%)"
-    )
-
-    LOG.info("========================")
-    LOG.info("PHASE 3.3: Engineer derived features")
-    LOG.info("========================")
-    # This phase adds derived fields that support NLP analysis.
-    # These fields do not exist in the source HTML:
-    # they are computed from the cleaned text.
-    #
-    # Derived features added here:
-    #
-    # abstract_word_count: number of words in the raw abstract.
-    #   WHY: Consistent with Module 5; allows comparison across modules.
-    #
-    # tokens: list of individual words in the cleaned abstract.
-    #   WHY: Tokenization is the foundation of all NLP analysis.
-    #
-    # token_count: number of tokens after cleaning and stopword removal.
-    #   WHY: Useful for comparing document length across papers.
-    #
-    # unique_token_count: number of distinct tokens.
-    #   WHY: Combined with token_count gives vocabulary richness.
-    #
-    # type_token_ratio: unique_tokens / total_tokens.
-    #   WHY: Measures vocabulary richness (diversity of words used).
-    #   A ratio close to 1.0 means almost every word is unique.
-    #   A ratio close to 0.0 means many words are repeated.
-    #
-    # author_count: number of authors.
-    #   WHY: Consistent with Module 5; allows comparison.
-    #
-    LOG.info("Inspect: do these derived fields look meaningful?")
-    LOG.info("Would any additional features help the analysis?")
-    LOG.info("========================")
-
-    # Calculate derived field: abstract word count
-    abstract_raw_word_count: int = (
-        len(abstract_raw.split()) if abstract_raw != "unknown" else 0
-    )
-    LOG.info(f"  abstract_word_count: {abstract_raw_word_count}")
-
-    # Calculate derived field: author count
-    author_count: int = (
-        len([a.strip() for a in authors.split(",")]) if authors != "unknown" else 0
-    )
-    LOG.info(f"  author_count:        {author_count}")
-
-    # Tokenize the cleaned abstract
-    tokens: list[str] = abstract_clean.split() if abstract_clean != "unknown" else []
-    token_count: int = len(tokens)
-    LOG.info(f"  token_count:         {token_count}")
-
-    unique_token_count: int = len(set(tokens))
-    LOG.info(f"  unique_token_count:  {unique_token_count}")
-
-    # Type-token ratio: vocabulary richness
-    type_token_ratio: float = (
-        round(unique_token_count / token_count, 4) if token_count > 0 else 0.0
-    )
-    LOG.info(f"  type_token_ratio:    {type_token_ratio}")
-    LOG.info(f"  top 10 tokens:       {tokens[:10]}")
-
-    LOG.info("========================")
-    LOG.info("PHASE 3.4: Build record and create DataFrame")
-    LOG.info("========================")
-
-    record = {
-        "arxiv_id": arxiv_id,
-        "title": title,
-        "authors": authors,
-        "subjects": subjects,
-        "submitted": date_submitted_str,
-        "abstract_raw": abstract_raw,
-        "abstract_clean": abstract_clean,
-        "tokens": " ".join(tokens),
-        "abstract_word_count": abstract_raw_word_count,
-        "token_count": token_count,
-        "unique_token_count": unique_token_count,
-        "type_token_ratio": type_token_ratio,
-        "author_count": author_count,
-    }
-
-    df = pd.DataFrame([record])
-
-    LOG.info(f"Created DataFrame with {len(df)} row and {len(df.columns)} columns")
-    LOG.info(f"Columns: {list(df.columns)}")
-
-    LOG.info("DataFrame Details")
-    LOG.info(f"  Title: {title}")
-    LOG.info(f"  Author count: {record['author_count']}")
-    LOG.info(f"  Abstract word count: {record['abstract_word_count']}")
-    LOG.info(f"  Token count (clean): {record['token_count']}")
-    LOG.info(f"  Type-token ratio: {record['type_token_ratio']}")
-    LOG.info(
-        f"  DF preview:\n{
-            df[
-                ['arxiv_id', 'title', 'token_count', 'type_token_ratio', 'author_count']
-            ].head()
-        }"
-    )
-
-    LOG.info("Sink: Pandas DataFrame created")
-    LOG.info("Transformation complete.")
-
-    # Return the transformed DataFrame for use in the Load stage.
-    return df
+    return df, corpus

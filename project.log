@@ -731,3 +731,428 @@
 2026-04-20 04:20:53 | INFO | CI | ========================
 2026-04-20 04:20:53 | INFO | CI | Pipeline executed successfully!
 2026-04-20 04:20:53 | INFO | CI | ========================
+2026-04-20 04:46:06 | INFO | CI | === RUN START ===
+2026-04-20 04:46:06 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 04:46:06 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 04:46:06 | INFO | CI | python=3.14.2
+2026-04-20 04:46:06 | INFO | CI | os=Windows 11
+2026-04-20 04:46:06 | INFO | CI | shell=powershell
+2026-04-20 04:46:06 | INFO | CI | cwd=.
+2026-04-20 04:46:06 | INFO | CI | github_actions=False
+2026-04-20 04:46:06 | INFO | CI | START PIPELINE
+2026-04-20 04:46:06 | INFO | CI | ROOT_PATH = .
+2026-04-20 04:46:06 | INFO | CI | DATA_PATH = data
+2026-04-20 04:46:06 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 04:46:06 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 04:46:06 | INFO | CI | ========================
+2026-04-20 04:46:06 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 04:46:06 | INFO | CI | ========================
+2026-04-20 04:46:06 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 04:46:08 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 04:46:08 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 04:46:08 | INFO | CI | ========================
+2026-04-20 04:46:08 | INFO | CI | Pipeline executed successfully!
+2026-04-20 04:46:08 | INFO | CI | ========================
+2026-04-20 05:12:46 | INFO | CI | === RUN START ===
+2026-04-20 05:12:46 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 05:12:46 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 05:12:46 | INFO | CI | python=3.14.2
+2026-04-20 05:12:46 | INFO | CI | os=Windows 11
+2026-04-20 05:12:46 | INFO | CI | shell=powershell
+2026-04-20 05:12:46 | INFO | CI | cwd=.
+2026-04-20 05:12:46 | INFO | CI | github_actions=False
+2026-04-20 05:12:46 | INFO | CI | START PIPELINE
+2026-04-20 05:12:46 | INFO | CI | ROOT_PATH = .
+2026-04-20 05:12:46 | INFO | CI | DATA_PATH = data
+2026-04-20 05:12:46 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 05:12:46 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 05:12:46 | INFO | CI | ========================
+2026-04-20 05:12:46 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 05:12:46 | INFO | CI | ========================
+2026-04-20 05:12:46 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 05:12:47 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 05:12:47 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 05:12:47 | INFO | CI | ========================
+2026-04-20 05:12:47 | INFO | CI | Pipeline executed successfully!
+2026-04-20 05:12:47 | INFO | CI | ========================
+2026-04-20 05:16:38 | INFO | CI | === RUN START ===
+2026-04-20 05:16:38 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 05:16:38 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 05:16:38 | INFO | CI | python=3.14.2
+2026-04-20 05:16:38 | INFO | CI | os=Windows 11
+2026-04-20 05:16:38 | INFO | CI | shell=powershell
+2026-04-20 05:16:38 | INFO | CI | cwd=.
+2026-04-20 05:16:38 | INFO | CI | github_actions=False
+2026-04-20 05:16:38 | INFO | CI | START PIPELINE
+2026-04-20 05:16:38 | INFO | CI | ROOT_PATH = .
+2026-04-20 05:16:38 | INFO | CI | DATA_PATH = data
+2026-04-20 05:16:38 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 05:16:38 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 05:16:38 | INFO | CI | ========================
+2026-04-20 05:16:38 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 05:16:38 | INFO | CI | ========================
+2026-04-20 05:16:38 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 05:16:40 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 05:16:40 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 05:16:40 | INFO | CI | ========================
+2026-04-20 05:16:40 | INFO | CI | Pipeline executed successfully!
+2026-04-20 05:16:40 | INFO | CI | ========================
+2026-04-20 05:18:02 | INFO | CI | === RUN START ===
+2026-04-20 05:18:02 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 05:18:02 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 05:18:02 | INFO | CI | python=3.14.2
+2026-04-20 05:18:02 | INFO | CI | os=Windows 11
+2026-04-20 05:18:02 | INFO | CI | shell=powershell
+2026-04-20 05:18:02 | INFO | CI | cwd=.
+2026-04-20 05:18:02 | INFO | CI | github_actions=False
+2026-04-20 05:18:02 | INFO | CI | START PIPELINE
+2026-04-20 05:18:02 | INFO | CI | ROOT_PATH = .
+2026-04-20 05:18:02 | INFO | CI | DATA_PATH = data
+2026-04-20 05:18:02 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 05:18:02 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 05:18:02 | INFO | CI | ========================
+2026-04-20 05:18:02 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 05:18:02 | INFO | CI | ========================
+2026-04-20 05:18:02 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 05:18:04 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 05:18:04 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 05:18:04 | INFO | CI | ========================
+2026-04-20 05:18:04 | INFO | CI | Pipeline executed successfully!
+2026-04-20 05:18:04 | INFO | CI | ========================
+2026-04-20 05:22:08 | INFO | CI | === RUN START ===
+2026-04-20 05:22:08 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 05:22:08 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 05:22:08 | INFO | CI | python=3.14.2
+2026-04-20 05:22:08 | INFO | CI | os=Windows 11
+2026-04-20 05:22:08 | INFO | CI | shell=powershell
+2026-04-20 05:22:08 | INFO | CI | cwd=.
+2026-04-20 05:22:08 | INFO | CI | github_actions=False
+2026-04-20 05:22:08 | INFO | CI | START PIPELINE
+2026-04-20 05:22:08 | INFO | CI | ROOT_PATH = .
+2026-04-20 05:22:08 | INFO | CI | DATA_PATH = data
+2026-04-20 05:22:08 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 05:22:08 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 05:22:08 | INFO | CI | ========================
+2026-04-20 05:22:08 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 05:22:08 | INFO | CI | ========================
+2026-04-20 05:22:08 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 05:22:09 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 05:22:09 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 05:22:09 | INFO | CI | ========================
+2026-04-20 05:22:09 | INFO | CI | Pipeline executed successfully!
+2026-04-20 05:22:09 | INFO | CI | ========================
+2026-04-20 05:30:05 | INFO | CI | === RUN START ===
+2026-04-20 05:30:05 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 05:30:05 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 05:30:05 | INFO | CI | python=3.14.2
+2026-04-20 05:30:05 | INFO | CI | os=Windows 11
+2026-04-20 05:30:05 | INFO | CI | shell=powershell
+2026-04-20 05:30:05 | INFO | CI | cwd=.
+2026-04-20 05:30:05 | INFO | CI | github_actions=False
+2026-04-20 05:30:05 | INFO | CI | START PIPELINE
+2026-04-20 05:30:05 | INFO | CI | ROOT_PATH = .
+2026-04-20 05:30:05 | INFO | CI | DATA_PATH = data
+2026-04-20 05:30:05 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 05:30:05 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 05:30:05 | INFO | CI | ========================
+2026-04-20 05:30:05 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 05:30:05 | INFO | CI | ========================
+2026-04-20 05:30:05 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 05:30:07 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 05:30:07 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 05:30:07 | INFO | CI | ========================
+2026-04-20 05:30:07 | INFO | CI | Pipeline executed successfully!
+2026-04-20 05:30:07 | INFO | CI | ========================
+2026-04-20 05:30:38 | INFO | CI | === RUN START ===
+2026-04-20 05:30:38 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 05:30:38 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 05:30:38 | INFO | CI | python=3.14.2
+2026-04-20 05:30:38 | INFO | CI | os=Windows 11
+2026-04-20 05:30:38 | INFO | CI | shell=powershell
+2026-04-20 05:30:38 | INFO | CI | cwd=.
+2026-04-20 05:30:38 | INFO | CI | github_actions=False
+2026-04-20 05:30:38 | INFO | CI | START PIPELINE
+2026-04-20 05:30:38 | INFO | CI | ROOT_PATH = .
+2026-04-20 05:30:38 | INFO | CI | DATA_PATH = data
+2026-04-20 05:30:38 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 05:30:38 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 05:30:38 | INFO | CI | ========================
+2026-04-20 05:30:38 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 05:30:38 | INFO | CI | ========================
+2026-04-20 05:30:38 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 05:30:39 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 05:30:39 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 05:30:39 | INFO | CI | ========================
+2026-04-20 05:30:39 | INFO | CI | Pipeline executed successfully!
+2026-04-20 05:30:39 | INFO | CI | ========================
+2026-04-20 05:35:22 | INFO | CI | === RUN START ===
+2026-04-20 05:35:22 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 05:35:22 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 05:35:22 | INFO | CI | python=3.14.2
+2026-04-20 05:35:22 | INFO | CI | os=Windows 11
+2026-04-20 05:35:22 | INFO | CI | shell=powershell
+2026-04-20 05:35:22 | INFO | CI | cwd=.
+2026-04-20 05:35:22 | INFO | CI | github_actions=False
+2026-04-20 05:35:22 | INFO | CI | START PIPELINE
+2026-04-20 05:35:22 | INFO | CI | ROOT_PATH = .
+2026-04-20 05:35:22 | INFO | CI | DATA_PATH = data
+2026-04-20 05:35:22 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 05:35:22 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 05:35:22 | INFO | CI | ========================
+2026-04-20 05:35:22 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 05:35:22 | INFO | CI | ========================
+2026-04-20 05:35:22 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 05:35:23 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 05:35:23 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 05:35:23 | INFO | CI | Returned headings: ['Abstract', '2 Background', '3 Model Architecture', '3.1 Encoder and Decoder Stacks', '3.2 Attention', '3.3 Position-wise Feed-Forward Networks', '3.4 Embeddings and Softmax', '3.5 Positional Encoding', '4 Why Self-Attention', '5 Training', '5.1 Training Data and Batching', '2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece', '5.2 Hardware and Schedule', '5.3 Optimizer', '5.4 Regularization', '6 Results', '6.1 Machine Translation', '6.2 Model Variations', '6.3 English Constituency Parsing', '7 Conclusion', 'References']
+2026-04-20 05:35:23 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-20 05:35:23 | INFO | CI | ========================
+2026-04-20 05:35:23 | INFO | CI | Pipeline executed successfully!
+2026-04-20 05:35:23 | INFO | CI | ========================
+2026-04-20 05:54:21 | INFO | CI | === RUN START ===
+2026-04-20 05:54:21 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 05:54:21 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 05:54:21 | INFO | CI | python=3.14.2
+2026-04-20 05:54:21 | INFO | CI | os=Windows 11
+2026-04-20 05:54:21 | INFO | CI | shell=powershell
+2026-04-20 05:54:21 | INFO | CI | cwd=.
+2026-04-20 05:54:21 | INFO | CI | github_actions=False
+2026-04-20 05:54:21 | INFO | CI | START PIPELINE
+2026-04-20 05:54:21 | INFO | CI | ROOT_PATH = .
+2026-04-20 05:54:21 | INFO | CI | DATA_PATH = data
+2026-04-20 05:54:21 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 05:54:21 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 05:54:21 | INFO | CI | ========================
+2026-04-20 05:54:21 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 05:54:21 | INFO | CI | ========================
+2026-04-20 05:54:21 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 05:54:22 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 05:54:22 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 05:54:22 | INFO | CI | Returned headings: ['Abstract', '2 Background', '3 Model Architecture', '3.1 Encoder and Decoder Stacks', '3.2 Attention', '3.3 Position-wise Feed-Forward Networks', '3.4 Embeddings and Softmax', '3.5 Positional Encoding', '4 Why Self-Attention', '5 Training', '5.1 Training Data and Batching', '2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece', '5.2 Hardware and Schedule', '5.3 Optimizer', '5.4 Regularization', '6 Results', '6.1 Machine Translation', '6.2 Model Variations', '6.3 English Constituency Parsing', '7 Conclusion', 'References']
+2026-04-20 05:54:22 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-20 05:54:57 | INFO | CI | === RUN START ===
+2026-04-20 05:54:57 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 05:54:57 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 05:54:57 | INFO | CI | python=3.14.2
+2026-04-20 05:54:57 | INFO | CI | os=Windows 11
+2026-04-20 05:54:57 | INFO | CI | shell=powershell
+2026-04-20 05:54:57 | INFO | CI | cwd=.
+2026-04-20 05:54:57 | INFO | CI | github_actions=False
+2026-04-20 05:54:57 | INFO | CI | START PIPELINE
+2026-04-20 05:54:57 | INFO | CI | ROOT_PATH = .
+2026-04-20 05:54:57 | INFO | CI | DATA_PATH = data
+2026-04-20 05:54:57 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 05:54:57 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 05:54:57 | INFO | CI | ========================
+2026-04-20 05:54:57 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 05:54:57 | INFO | CI | ========================
+2026-04-20 05:54:57 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 05:54:59 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 05:54:59 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 05:54:59 | INFO | CI | Returned headings: ['Abstract', '2 Background', '3 Model Architecture', '3.1 Encoder and Decoder Stacks', '3.2 Attention', '3.3 Position-wise Feed-Forward Networks', '3.4 Embeddings and Softmax', '3.5 Positional Encoding', '4 Why Self-Attention', '5 Training', '5.1 Training Data and Batching', '2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece', '5.2 Hardware and Schedule', '5.3 Optimizer', '5.4 Regularization', '6 Results', '6.1 Machine Translation', '6.2 Model Variations', '6.3 English Constituency Parsing', '7 Conclusion', 'References']
+2026-04-20 05:54:59 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-20 05:55:02 | INFO | CI | ========================
+2026-04-20 05:55:02 | INFO | CI | Pipeline executed successfully!
+2026-04-20 05:55:02 | INFO | CI | ========================
+2026-04-20 05:56:58 | INFO | CI | === RUN START ===
+2026-04-20 05:56:58 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 05:56:58 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 05:56:58 | INFO | CI | python=3.14.2
+2026-04-20 05:56:58 | INFO | CI | os=Windows 11
+2026-04-20 05:56:58 | INFO | CI | shell=powershell
+2026-04-20 05:56:58 | INFO | CI | cwd=.
+2026-04-20 05:56:58 | INFO | CI | github_actions=False
+2026-04-20 05:56:58 | INFO | CI | START PIPELINE
+2026-04-20 05:56:58 | INFO | CI | ROOT_PATH = .
+2026-04-20 05:56:58 | INFO | CI | DATA_PATH = data
+2026-04-20 05:56:58 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 05:56:58 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 05:56:58 | INFO | CI | ========================
+2026-04-20 05:56:58 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 05:56:58 | INFO | CI | ========================
+2026-04-20 05:56:58 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 05:56:59 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 05:56:59 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 05:56:59 | INFO | CI | Returned headings: ['Abstract', '2 Background', '3 Model Architecture', '3.1 Encoder and Decoder Stacks', '3.2 Attention', '3.3 Position-wise Feed-Forward Networks', '3.4 Embeddings and Softmax', '3.5 Positional Encoding', '4 Why Self-Attention', '5 Training', '5.1 Training Data and Batching', '2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece', '5.2 Hardware and Schedule', '5.3 Optimizer', '5.4 Regularization', '6 Results', '6.1 Machine Translation', '6.2 Model Variations', '6.3 English Constituency Parsing', '7 Conclusion', 'References']
+2026-04-20 05:56:59 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-20 05:57:02 | INFO | CI | ========================
+2026-04-20 05:57:02 | INFO | CI | Pipeline executed successfully!
+2026-04-20 05:57:02 | INFO | CI | ========================
+2026-04-20 06:13:01 | INFO | CI | === RUN START ===
+2026-04-20 06:13:01 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 06:13:01 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 06:13:01 | INFO | CI | python=3.14.2
+2026-04-20 06:13:01 | INFO | CI | os=Windows 11
+2026-04-20 06:13:01 | INFO | CI | shell=powershell
+2026-04-20 06:13:01 | INFO | CI | cwd=.
+2026-04-20 06:13:01 | INFO | CI | github_actions=False
+2026-04-20 06:13:01 | INFO | CI | START PIPELINE
+2026-04-20 06:13:01 | INFO | CI | ROOT_PATH = .
+2026-04-20 06:13:01 | INFO | CI | DATA_PATH = data
+2026-04-20 06:13:01 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 06:13:01 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 06:13:01 | INFO | CI | ========================
+2026-04-20 06:13:01 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 06:13:01 | INFO | CI | ========================
+2026-04-20 06:13:01 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 06:13:03 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 06:13:03 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 06:13:03 | INFO | CI | Returned headings: ['Abstract', '2 Background', '3 Model Architecture', '3.1 Encoder and Decoder Stacks', '3.2 Attention', '3.3 Position-wise Feed-Forward Networks', '3.4 Embeddings and Softmax', '3.5 Positional Encoding', '4 Why Self-Attention', '5 Training', '5.1 Training Data and Batching', '2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece', '5.2 Hardware and Schedule', '5.3 Optimizer', '5.4 Regularization', '6 Results', '6.1 Machine Translation', '6.2 Model Variations', '6.3 English Constituency Parsing', '7 Conclusion', 'References']
+2026-04-20 06:13:03 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-20 06:21:57 | INFO | CI | === RUN START ===
+2026-04-20 06:21:57 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 06:21:57 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 06:21:57 | INFO | CI | python=3.14.2
+2026-04-20 06:21:57 | INFO | CI | os=Windows 11
+2026-04-20 06:21:57 | INFO | CI | shell=powershell
+2026-04-20 06:21:57 | INFO | CI | cwd=.
+2026-04-20 06:21:57 | INFO | CI | github_actions=False
+2026-04-20 06:21:57 | INFO | CI | START PIPELINE
+2026-04-20 06:21:57 | INFO | CI | ROOT_PATH = .
+2026-04-20 06:21:57 | INFO | CI | DATA_PATH = data
+2026-04-20 06:21:57 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 06:21:57 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 06:21:57 | INFO | CI | ========================
+2026-04-20 06:21:57 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 06:21:57 | INFO | CI | ========================
+2026-04-20 06:21:57 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 06:21:58 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 06:21:58 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 06:21:58 | INFO | CI | Returned headings: ['Abstract', '2 Background', '3 Model Architecture', '3.1 Encoder and Decoder Stacks', '3.2 Attention', '3.3 Position-wise Feed-Forward Networks', '3.4 Embeddings and Softmax', '3.5 Positional Encoding', '4 Why Self-Attention', '5 Training', '5.1 Training Data and Batching', '2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece', '5.2 Hardware and Schedule', '5.3 Optimizer', '5.4 Regularization', '6 Results', '6.1 Machine Translation', '6.2 Model Variations', '6.3 English Constituency Parsing', '7 Conclusion', 'References']
+2026-04-20 06:21:58 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-20 06:24:31 | INFO | CI | === RUN START ===
+2026-04-20 06:24:31 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 06:24:31 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 06:24:31 | INFO | CI | python=3.14.2
+2026-04-20 06:24:31 | INFO | CI | os=Windows 11
+2026-04-20 06:24:31 | INFO | CI | shell=powershell
+2026-04-20 06:24:31 | INFO | CI | cwd=.
+2026-04-20 06:24:31 | INFO | CI | github_actions=False
+2026-04-20 06:24:31 | INFO | CI | START PIPELINE
+2026-04-20 06:24:31 | INFO | CI | ROOT_PATH = .
+2026-04-20 06:24:31 | INFO | CI | DATA_PATH = data
+2026-04-20 06:24:31 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 06:24:31 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 06:24:31 | INFO | CI | ========================
+2026-04-20 06:24:31 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 06:24:31 | INFO | CI | ========================
+2026-04-20 06:24:31 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 06:24:32 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 06:24:32 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 06:24:32 | INFO | CI | Returned headings: ['Abstract', '2 Background', '3 Model Architecture', '3.1 Encoder and Decoder Stacks', '3.2 Attention', '3.3 Position-wise Feed-Forward Networks', '3.4 Embeddings and Softmax', '3.5 Positional Encoding', '4 Why Self-Attention', '5 Training', '5.1 Training Data and Batching', '2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece', '5.2 Hardware and Schedule', '5.3 Optimizer', '5.4 Regularization', '6 Results', '6.1 Machine Translation', '6.2 Model Variations', '6.3 English Constituency Parsing', '7 Conclusion', 'References']
+2026-04-20 06:24:32 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-20 06:24:32 | INFO | CI | ========================
+2026-04-20 06:24:32 | INFO | CI | Pipeline executed successfully!
+2026-04-20 06:24:32 | INFO | CI | ========================
+2026-04-20 06:47:29 | INFO | CI | === RUN START ===
+2026-04-20 06:47:29 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 06:47:29 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 06:47:29 | INFO | CI | python=3.14.2
+2026-04-20 06:47:29 | INFO | CI | os=Windows 11
+2026-04-20 06:47:29 | INFO | CI | shell=powershell
+2026-04-20 06:47:29 | INFO | CI | cwd=.
+2026-04-20 06:47:29 | INFO | CI | github_actions=False
+2026-04-20 06:47:29 | INFO | CI | START PIPELINE
+2026-04-20 06:47:29 | INFO | CI | ROOT_PATH = .
+2026-04-20 06:47:29 | INFO | CI | DATA_PATH = data
+2026-04-20 06:47:29 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 06:47:29 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 06:47:29 | INFO | CI | ========================
+2026-04-20 06:47:29 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 06:47:29 | INFO | CI | ========================
+2026-04-20 06:47:29 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 06:47:30 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 06:47:30 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 06:47:30 | INFO | CI | Returned headings: ['Abstract', '2 Background', '3 Model Architecture', '3.1 Encoder and Decoder Stacks', '3.2 Attention', '3.3 Position-wise Feed-Forward Networks', '3.4 Embeddings and Softmax', '3.5 Positional Encoding', '4 Why Self-Attention', '5 Training', '5.1 Training Data and Batching', '2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece', '5.2 Hardware and Schedule', '5.3 Optimizer', '5.4 Regularization', '6 Results', '6.1 Machine Translation', '6.2 Model Variations', '6.3 English Constituency Parsing', '7 Conclusion', 'References']
+2026-04-20 06:47:30 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-20 06:47:31 | INFO | CI | ========================
+2026-04-20 06:47:31 | INFO | CI | Pipeline executed successfully!
+2026-04-20 06:47:31 | INFO | CI | ========================
+2026-04-20 06:59:41 | INFO | CI | === RUN START ===
+2026-04-20 06:59:41 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 06:59:41 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 06:59:41 | INFO | CI | python=3.14.2
+2026-04-20 06:59:41 | INFO | CI | os=Windows 11
+2026-04-20 06:59:41 | INFO | CI | shell=powershell
+2026-04-20 06:59:41 | INFO | CI | cwd=.
+2026-04-20 06:59:41 | INFO | CI | github_actions=False
+2026-04-20 06:59:41 | INFO | CI | START PIPELINE
+2026-04-20 06:59:41 | INFO | CI | ROOT_PATH = .
+2026-04-20 06:59:41 | INFO | CI | DATA_PATH = data
+2026-04-20 06:59:41 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 06:59:41 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 06:59:41 | INFO | CI | ========================
+2026-04-20 06:59:41 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 06:59:41 | INFO | CI | ========================
+2026-04-20 06:59:41 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 06:59:42 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 06:59:42 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 06:59:42 | INFO | CI | Returned headings: ['Abstract', '2 Background', '3 Model Architecture', '3.1 Encoder and Decoder Stacks', '3.2 Attention', '3.3 Position-wise Feed-Forward Networks', '3.4 Embeddings and Softmax', '3.5 Positional Encoding', '4 Why Self-Attention', '5 Training', '5.1 Training Data and Batching', '2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece', '5.2 Hardware and Schedule', '5.3 Optimizer', '5.4 Regularization', '6 Results', '6.1 Machine Translation', '6.2 Model Variations', '6.3 English Constituency Parsing', '7 Conclusion', 'References']
+2026-04-20 06:59:42 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-20 07:01:22 | INFO | CI | === RUN START ===
+2026-04-20 07:01:22 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 07:01:22 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 07:01:22 | INFO | CI | python=3.14.2
+2026-04-20 07:01:22 | INFO | CI | os=Windows 11
+2026-04-20 07:01:22 | INFO | CI | shell=powershell
+2026-04-20 07:01:22 | INFO | CI | cwd=.
+2026-04-20 07:01:22 | INFO | CI | github_actions=False
+2026-04-20 07:01:22 | INFO | CI | START PIPELINE
+2026-04-20 07:01:22 | INFO | CI | ROOT_PATH = .
+2026-04-20 07:01:22 | INFO | CI | DATA_PATH = data
+2026-04-20 07:01:22 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 07:01:22 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 07:01:22 | INFO | CI | ========================
+2026-04-20 07:01:22 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 07:01:22 | INFO | CI | ========================
+2026-04-20 07:01:22 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 07:01:24 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 07:01:24 | INFO | CI | SINK PATH = data\raw\reed_raw.txt
+2026-04-20 07:01:24 | INFO | CI | Returned headings: ['Abstract', '2 Background', '3 Model Architecture', '3.1 Encoder and Decoder Stacks', '3.2 Attention', '3.3 Position-wise Feed-Forward Networks', '3.4 Embeddings and Softmax', '3.5 Positional Encoding', '4 Why Self-Attention', '5 Training', '5.1 Training Data and Batching', '2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece', '5.2 Hardware and Schedule', '5.3 Optimizer', '5.4 Regularization', '6 Results', '6.1 Machine Translation', '6.2 Model Variations', '6.3 English Constituency Parsing', '7 Conclusion', 'References']
+2026-04-20 07:01:24 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-20 07:01:25 | INFO | CI | ========================
+2026-04-20 07:01:25 | INFO | CI | STAGE 04: ANALYZE starting...
+2026-04-20 07:01:25 | INFO | CI | ========================
+2026-04-20 07:01:25 | INFO | CI | ========================
+2026-04-20 07:01:25 | INFO | CI | PHASE 4.1: Extract tokens and summary statistics
+2026-04-20 07:01:25 | INFO | CI | ========================
+2026-04-20 07:01:25 | INFO | CI |   Abstract word count (raw):    1
+2026-04-20 07:01:25 | INFO | CI |   Token count (clean):          3817
+2026-04-20 07:01:25 | INFO | CI |   Unique token count:           1524
+2026-04-20 07:01:25 | INFO | CI | ========================
+2026-04-20 07:01:25 | INFO | CI | PHASE 4.2: Top 20 token frequency - bar chart
+2026-04-20 07:01:25 | INFO | CI | ========================
+2026-04-20 07:01:25 | INFO | CI |   Saved bar chart to data\processed\reed_top_tokens.png
+2026-04-20 07:01:25 | INFO | CI | ========================
+2026-04-20 07:01:25 | INFO | CI | PHASE 4.3: Word cloud
+2026-04-20 07:01:25 | INFO | CI | ========================
+2026-04-20 07:01:26 | INFO | CI |   Saved word cloud to data\processed\reed_wordcloud.png
+2026-04-20 07:01:26 | INFO | CI | ========================
+2026-04-20 07:01:26 | INFO | CI | PHASE 4.4: Top token summary (inline)
+2026-04-20 07:01:26 | INFO | CI | ========================
+2026-04-20 07:01:26 | INFO | CI |   Top 20 tokens by frequency:
+2026-04-20 07:01:26 | INFO | CI |       1. attention                      61
+2026-04-20 07:01:26 | INFO | CI |       2. model                          44
+2026-04-20 07:01:26 | INFO | CI |       3. models                         35
+2026-04-20 07:01:26 | INFO | CI |       4. sequence                       34
+2026-04-20 07:01:26 | INFO | CI |       5. transformer                    28
+2026-04-20 07:01:26 | INFO | CI |       6. output                         28
+2026-04-20 07:01:26 | INFO | CI |       7. neural                         27
+2026-04-20 07:01:26 | INFO | CI |       8. layer                          27
+2026-04-20 07:01:26 | INFO | CI |       9. ·                              27
+2026-04-20 07:01:26 | INFO | CI |      10. selfattention                  25
+2026-04-20 07:01:26 | INFO | CI |      11. training                       24
+2026-04-20 07:01:26 | INFO | CI |      12. input                          24
+2026-04-20 07:01:26 | INFO | CI |      13. translation                    23
+2026-04-20 07:01:26 | INFO | CI |      14. layers                         23
+2026-04-20 07:01:26 | INFO | CI |      15. encoder                        21
+2026-04-20 07:01:26 | INFO | CI |      16. positions                      21
+2026-04-20 07:01:26 | INFO | CI |      17. recurrent                      20
+2026-04-20 07:01:26 | INFO | CI |      18. decoder                        20
+2026-04-20 07:01:26 | INFO | CI |      19. pad                            20
+2026-04-20 07:01:26 | INFO | CI |      20. values                         18
+2026-04-20 07:01:26 | INFO | CI | Sink: visualizations saved to data/processed/
+2026-04-20 07:01:26 | INFO | CI | Analysis complete.
+2026-04-20 07:01:26 | INFO | CI | ========================
+2026-04-20 07:01:26 | INFO | CI | Pipeline executed successfully!
+2026-04-20 07:01:26 | INFO | CI | ========================

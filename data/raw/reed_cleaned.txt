@@ -1,0 +1,833 @@
+provided proper attribution provided google grants permission
+reproduce tables figures paper solely use journalistic
+scholarly works
+attention need
+ashish vaswani∗
+google brain
+avaswanigooglecom
+noam shazeer∗
+google brain
+noamgooglecom
+niki parmar∗
+google research
+nikipgooglecom
+jakob uszkoreit∗
+google research
+uszgooglecom
+llion jones∗
+google research
+lliongooglecom
+aidan n gomez∗ †
+university toronto
+aidancstorontoedu
+łukasz kaiser ∗
+google brain
+lukaszkaisergooglecom
+illia polosukhin∗ ‡
+illiapolosukhingmailcom
+abstract
+dominant sequence transduction models based complex recurrent
+convolutional neural networks include encoder decoder best
+performing models connect encoder decoder attention
+mechanism propose new simple network architecture transformer
+based solely attention mechanisms dispensing recurrence convolutions
+entirely experiments machine translation tasks models
+superior quality parallelizable requiring significantly
+time train model achieves 284 bleu wmt 2014 english
+togerman translation task improving existing best results including
+ensembles 2 bleu wmt 2014 englishtofrench translation task
+model establishes new singlemodel stateoftheart bleu score 418
+training 35 days gpus small fraction training costs
+best models literature transformer generalizes
+tasks applying successfully english constituency parsing
+large limited training data
+∗equal contribution listing order random jakob proposed replacing rnns selfattention started
+effort evaluate idea ashish illia designed implemented transformer models
+crucially involved aspect work noam proposed scaled dotproduct attention multihead
+attention parameterfree position representation person involved nearly
+detail niki designed implemented tuned evaluated countless model variants original codebase
+tensor2tensor llion experimented novel model variants responsible initial codebase
+efficient inference visualizations lukasz aidan spent countless long days designing parts
+implementing tensor2tensor replacing earlier codebase greatly improving results massively accelerating
+research
+†work performed google brain
+‡work performed google research
+31st conference neural information processing systems nips 2017 long beach usa
+arxiv170603762v7 cscl 2 aug 20231 introduction
+recurrent neural networks long shortterm memory 13 gated recurrent 7 neural networks
+particular firmly established state art approaches sequence modeling
+transduction problems language modeling machine translation 35 2 5 numerous
+efforts continued push boundaries recurrent language models encoderdecoder
+architectures 38 24 15
+recurrent models typically factor computation symbol positions input output
+sequences aligning positions steps computation time generate sequence hidden
+states ht function previous hidden state ht−1 input position t inherently
+sequential nature precludes parallelization training examples critical longer
+sequence lengths memory constraints limit batching examples recent work achieved
+significant improvements computational efficiency factorization tricks 21 conditional
+computation 32 improving model performance case fundamental
+constraint sequential computation remains
+attention mechanisms integral compelling sequence modeling transduc
+tion models tasks allowing modeling dependencies regard distance
+input output sequences 2 19 cases 27 attention mechanisms
+conjunction recurrent network
+work propose transformer model architecture eschewing recurrence instead
+relying entirely attention mechanism draw global dependencies input output
+transformer allows significantly parallelization reach new state art
+translation quality trained little hours p100 gpus
+2 background
+goal reducing sequential computation forms foundation extended neural gpu
+16 bytenet 18 convs2s 9 use convolutional neural networks basic building
+block computing hidden representations parallel input output positions models
+number operations required relate signals arbitrary input output positions grows
+distance positions linearly convs2s logarithmically bytenet makes
+difficult learn dependencies distant positions 12 transformer
+reduced constant number operations albeit cost reduced effective resolution
+averaging attentionweighted positions effect counteract multihead attention
+described section 32
+selfattention called intraattention attention mechanism relating different positions
+single sequence order compute representation sequence selfattention
+successfully variety tasks including reading comprehension abstractive summarization
+textual entailment learning taskindependent sentence representations 4 27 28 22
+endtoend memory networks based recurrent attention mechanism instead sequence
+aligned recurrence shown perform simplelanguage question answering
+language modeling tasks 34
+best knowledge transformer transduction model relying
+entirely selfattention compute representations input output sequence
+aligned rnns convolution following sections describe transformer motivate
+selfattention discuss advantages models 17 18 9
+3 model architecture
+competitive neural sequence transduction models encoderdecoder structure 5 2 35
+encoder maps input sequence symbol representations x1 xn sequence
+continuous representations z z1 zn given z decoder generates output
+sequence y1 ym symbols element time step model autoregressive
+10 consuming previously generated symbols additional input generating
+2figure 1 transformer model architecture
+transformer follows overall architecture stacked selfattention pointwise fully
+connected layers encoder decoder shown left right halves figure 1
+respectively
+31 encoder decoder stacks
+encoder encoder composed stack n 6 identical layers layer
+sublayers multihead selfattention mechanism second simple position
+wise fully connected feedforward network employ residual connection 11
+sublayers followed layer normalization 1 output sublayer
+layernormx sublayerx sublayerx function implemented sublayer
+facilitate residual connections sublayers model embedding
+layers produce outputs dimension dmodel 512
+decoder decoder composed stack n 6 identical layers addition
+sublayers encoder layer decoder inserts sublayer performs multihead
+attention output encoder stack similar encoder employ residual connections
+sublayers followed layer normalization modify selfattention
+sublayer decoder stack prevent positions attending subsequent positions
+masking combined fact output embeddings offset position ensures
+predictions position depend known outputs positions
+32 attention
+attention function described mapping query set keyvalue pairs output
+query keys values output vectors output computed weighted sum
+3scaled dotproduct attention
+multihead attention
+figure 2 left scaled dotproduct attention right multihead attention consists
+attention layers running parallel
+values weight assigned value computed compatibility function
+query corresponding key
+321 scaled dotproduct attention
+particular attention scaled dotproduct attention figure 2 input consists
+queries keys dimension dk values dimension dv compute dot products
+query keys divide √dk apply softmax function obtain weights
+values
+practice compute attention function set queries simultaneously packed
+matrix q keys values packed matrices k v compute
+matrix outputs
+attentionq k v softmax qk t
+√dk
+v 1
+commonly attention functions additive attention 2 dotproduct multi
+plicative attention dotproduct attention identical algorithm scaling factor
+1√dk
+additive attention computes compatibility function feedforward network
+single hidden layer similar theoretical complexity dotproduct attention
+faster spaceefficient practice implemented highly optimized
+matrix multiplication code
+small values dk mechanisms perform similarly additive attention outperforms
+dot product attention scaling larger values dk 3 suspect large values
+dk dot products grow large magnitude pushing softmax function regions
+extremely small gradients 4 counteract effect scale dot products 1√dk
+
+322 multihead attention
+instead performing single attention function dmodeldimensional keys values queries
+found beneficial linearly project queries keys values h times different learned
+linear projections dk dk dv dimensions respectively projected versions
+queries keys values perform attention function parallel yielding dvdimensional
+4to illustrate dot products large assume components q k independent random
+variables mean 0 variance 1 dot product q · k pdk
+i1 qiki mean 0 variance dk
+4output values concatenated projected resulting final values
+depicted figure 2
+multihead attention allows model jointly attend information different representation
+subspaces different positions single attention head averaging inhibits
+multiheadq k v concathead 1 headhw o
+headi attentionqw q
+kw k
+v w v
+
+projections parameter matricesw q
+∈ rdmodel×dk w k
+∈ rdmodel×dk w v
+∈ rdmodel×dv
+w o ∈ rhdv×dmodel
+work employ h 8 parallel attention layers heads use
+dk dv dmodelh 64 reduced dimension head total computational cost
+similar singlehead attention dimensionality
+323 applications attention model
+transformer uses multihead attention different ways
+• encoderdecoder attention layers queries come previous decoder layer
+memory keys values come output encoder allows
+position decoder attend positions input sequence mimics
+typical encoderdecoder attention mechanisms sequencetosequence models
+38 2 9
+• encoder contains selfattention layers selfattention layer keys values
+queries come place case output previous layer
+encoder position encoder attend positions previous layer
+encoder
+• similarly selfattention layers decoder allow position decoder attend
+positions decoder including position need prevent leftward
+information flow decoder preserve autoregressive property implement
+inside scaled dotproduct attention masking setting −∞ values input
+softmax correspond illegal connections figure 2
+33 positionwise feedforward networks
+addition attention sublayers layers encoder decoder contains fully
+connected feedforward network applied position separately identically
+consists linear transformations relu activation
+ffnx max0 xw1 b1w2 b2 2
+linear transformations different positions use different parameters
+layer layer way describing convolutions kernel size 1
+dimensionality input output dmodel 512 innerlayer dimensionality
+df f 2048
+34 embeddings softmax
+similarly sequence transduction models use learned embeddings convert input
+tokens output tokens vectors dimension dmodel use usual learned linear transfor
+mation softmax function convert decoder output predicted nexttoken probabilities
+model share weight matrix embedding layers presoftmax
+linear transformation similar 30 embedding layers multiply weights √dmodel
+5table 1 maximum path lengths perlayer complexity minimum number sequential operations
+different layer types n sequence length d representation dimension k kernel
+size convolutions r size neighborhood restricted selfattention
+layer type complexity layer sequential maximum path length
+operations
+selfattention on2 · d o1 o1
+recurrent · d2
+convolutional ok · n · d2 o1 ologkn
+selfattention restricted · n · d o1 onr
+35 positional encoding
+model contains recurrence convolution order model use
+order sequence inject information relative absolute position
+tokens sequence end add positional encodings input embeddings
+bottoms encoder decoder stacks positional encodings dimension dmodel
+embeddings summed choices positional encodings
+learned fixed 9
+work use sine cosine functions different frequencies
+p epos2i sinpos100002idmodel
+p epos2i1 cospos100002idmodel
+pos position dimension dimension positional encoding
+corresponds sinusoid wavelengths form geometric progression 2π 10000 · 2π
+chose function hypothesized allow model easily learn attend
+relative positions fixed offset k p eposk represented linear function
+p epos
+experimented learned positional embeddings 9 instead found
+versions produced nearly identical results table 3 row e chose sinusoidal version
+allow model extrapolate sequence lengths longer ones encountered
+training
+4 selfattention
+section compare aspects selfattention layers recurrent convolu
+tional layers commonly mapping variablelength sequence symbol representations
+x1 xn sequence equal length z1 zn xi zi ∈ rd hidden
+layer typical sequence transduction encoder decoder motivating use selfattention
+consider desiderata
+total computational complexity layer computation
+parallelized measured minimum number sequential operations required
+path length longrange dependencies network learning longrange
+dependencies key challenge sequence transduction tasks key factor affecting
+ability learn dependencies length paths forward backward signals
+traverse network shorter paths combination positions input
+output sequences easier learn longrange dependencies 12 compare
+maximum path length input output positions networks composed
+different layer types
+noted table 1 selfattention layer connects positions constant number sequentially
+executed operations recurrent layer requires sequential operations terms
+computational complexity selfattention layers faster recurrent layers sequence
+6length n smaller representation dimensionality d case
+sentence representations stateoftheart models machine translations wordpiece
+38 bytepair 31 representations improve computational performance tasks involving
+long sequences selfattention restricted considering neighborhood size r
+input sequence centered respective output position increase maximum
+path length onr plan investigate approach future work
+single convolutional layer kernel width k n connect pairs input output
+positions requires stack onk convolutional layers case contiguous kernels
+ologkn case dilated convolutions 18 increasing length longest paths
+positions network convolutional layers generally expensive
+recurrent layers factor k separable convolutions 6 decrease complexity
+considerably ok · n · d n · d2 k n complexity separable
+convolution equal combination selfattention layer pointwise feedforward layer
+approach model
+benefit selfattention yield interpretable models inspect attention distributions
+models present discuss examples appendix individual attention
+heads clearly learn perform different tasks appear exhibit behavior related syntactic
+semantic structure sentences
+5 training
+section describes training regime models
+51 training data batching
+trained standard wmt 2014 englishgerman dataset consisting 45 million
+sentence pairs sentences encoded bytepair encoding 3 shared source
+target vocabulary 37000 tokens englishfrench significantly larger wmt
+2014 englishfrench dataset consisting 36 m sentences split tokens 32000 wordpiece
+vocabulary 38 sentence pairs batched approximate sequence length training
+batch contained set sentence pairs containing approximately 25000 source tokens 25000
+target tokens
+52 hardware schedule
+trained models machine 8 nvidia p100 gpus base models
+hyperparameters described paper training step took 04 seconds
+trained base models total 100000 steps 12 hours big modelsdescribed
+line table 3 step time 10 seconds big models trained 300000 steps
+35 days
+53 optimizer
+adam optimizer 20 β1 09 β2 098 ϵ 10 −9 varied learning
+rate course training according formula
+lrate d−05
+model · minstepnum−05 stepnum · warmupsteps−15 3
+corresponds increasing learning rate linearly warmupsteps training steps
+decreasing proportionally inverse square root step number
+warmupsteps 4000
+54 regularization
+employ types regularization training
+7table 2 transformer achieves better bleu scores previous stateoftheart models
+englishtogerman englishtofrench newstest2014 tests fraction training cost
+model
+bleu training cost flops
+ende enfr ende enfr
+bytenet 18 2375
+deepatt posunk 39 392 10 · 1020
+gnmt rl 38 246 3992 23 · 1019 14 · 1020
+convs2s 9 2516 4046 96 · 1018 15 · 1020
+moe 32 2603 4056 20 · 1019 12 · 1020
+deepatt posunk ensemble 39 404 80 · 1020
+gnmt rl ensemble 38 2630 4116 18 · 1020 11 · 1021
+convs2s ensemble 9 2636 4129 77 · 1019 12 · 1021
+transformer base model 273 381 33 · 1018
+transformer big 284 418 23 · 1019
+residual dropout apply dropout 33 output sublayer added
+sublayer input normalized addition apply dropout sums embeddings
+positional encodings encoder decoder stacks base model use rate
+pdrop 01
+label smoothing training employed label smoothing value ϵls 0 1 36
+hurts perplexity model learns unsure improves accuracy bleu score
+6 results
+61 machine translation
+wmt 2014 englishtogerman translation task big transformer model transformer big
+table 2 outperforms best previously reported models including ensembles 20
+bleu establishing new stateoftheart bleu score 284 configuration model
+listed line table 3 training took 35 days 8 p100 gpus base model
+surpasses previously published models ensembles fraction training cost
+competitive models
+wmt 2014 englishtofrench translation task big model achieves bleu score 410
+outperforming previously published single models 14 training cost
+previous stateoftheart model transformer big model trained englishtofrench
+dropout rate pdrop 01 instead 03
+base models single model obtained averaging 5 checkpoints
+written 10minute intervals big models averaged 20 checkpoints
+beam search beam size 4 length penalty α 0 6 38 hyperparameters
+chosen experimentation development set set maximum output length
+inference input length 50 terminate early possible 38
+table 2 summarizes results compares translation quality training costs model
+architectures literature estimate number floating point operations train
+model multiplying training time number gpus estimate sustained
+singleprecision floatingpoint capacity gpu 5
+62 model variations
+evaluate importance different components transformer varied base model
+different ways measuring change performance englishtogerman translation
+5we values 28 37 60 95 tflops k80 k40 m40 p100 respectively
+8table 3 variations transformer architecture unlisted values identical base
+model metrics englishtogerman translation development set newstest2013 listed
+perplexities perwordpiece according bytepair encoding compared
+perword perplexities
+n d model dff h d k dv pdrop ϵls
+train ppl bleu params
+steps dev dev ×106
+base 6 512 2048 8 64 64 01 01 100k 492 258 65
+
+1 512 512 529 249
+4 128 128 500 255
+16 32 32 491 258
+32 16 16 501 254
+b 16 516 251 58
+32 501 254 60
+c
+2 611 237 36
+4 519 253 50
+8 488 255 80
+256 32 32 575 245 28
+1024 128 128 466 260 168
+1024 512 254 53
+4096 475 262 90
+d
+00 577 246
+02 495 255
+00 467 253
+02 547 257
+e positional embedding instead sinusoids 492 257
+big 6 1024 4096 16 03 300k 433 264 213
+development set newstest2013 beam search described previous section
+checkpoint averaging present results table 3
+table 3 rows vary number attention heads attention key value dimensions
+keeping computation constant described section 322 singlehead
+attention 09 bleu worse best setting quality drops heads
+table 3 rows b observe reducing attention key size dk hurts model quality
+suggests determining compatibility easy sophisticated compatibility
+function dot product beneficial observe rows c d expected
+bigger models better dropout helpful avoiding overfitting row e replace
+sinusoidal positional encoding learned positional embeddings 9 observe nearly identical
+results base model
+63 english constituency parsing
+evaluate transformer generalize tasks performed experiments english
+constituency parsing task presents specific challenges output subject strong structural
+constraints significantly longer input furthermore rnn sequencetosequence
+models able attain stateoftheart results smalldata regimes 37
+trained 4layer transformer dmodel 1024 wall street journal wsj portion
+penn treebank 25 40k training sentences trained semisupervised setting
+larger highconfidence berkleyparser corpora approximately 17 m sentences
+37 vocabulary 16k tokens wsj setting vocabulary 32k tokens
+semisupervised setting
+performed small number experiments select dropout attention residual
+section 54 learning rates beam size section 22 development set parameters
+remained unchanged englishtogerman base translation model inference
+9table 4 transformer generalizes english constituency parsing results section 23
+wsj
+parser training wsj 23 f1
+vinyals kaiser el al 2014 37 wsj discriminative 883
+petrov et al 2006 29 wsj discriminative 904
+zhu et al 2013 40 wsj discriminative 904
+dyer et al 2016 8 wsj discriminative 917
+transformer 4 layers wsj discriminative 913
+zhu et al 2013 40 semisupervised 913
+huang harper 2009 14 semisupervised 913
+mcclosky et al 2006 26 semisupervised 921
+vinyals kaiser el al 2014 37 semisupervised 921
+transformer 4 layers semisupervised 927
+luong et al 2015 23 multitask 930
+dyer et al 2016 8 generative 933
+increased maximum output length input length 300 beam size 21 α 03
+wsj semisupervised setting
+results table 4 despite lack taskspecific tuning model performs sur
+prisingly yielding better results previously reported models exception
+recurrent neural network grammar 8
+contrast rnn sequencetosequence models 37 transformer outperforms berkeley
+parser 29 training wsj training set 40k sentences
+7 conclusion
+work presented transformer sequence transduction model based entirely
+attention replacing recurrent layers commonly encoderdecoder architectures
+multiheaded selfattention
+translation tasks transformer trained significantly faster architectures based
+recurrent convolutional layers wmt 2014 englishtogerman wmt 2014
+englishtofrench translation tasks achieve new state art task best
+model outperforms previously reported ensembles
+excited future attentionbased models plan apply tasks
+plan extend transformer problems involving input output modalities text
+investigate local restricted attention mechanisms efficiently handle large inputs outputs
+images audio video making generation sequential research goals
+code train evaluate models available httpsgithubcom
+tensorflowtensor2tensor
+acknowledgements grateful nal kalchbrenner stephan gouws fruitful
+comments corrections inspiration
+references
+1 jimmy lei ba jamie ryan kiros geoffrey e hinton layer normalization arxiv preprint
+arxiv160706450 2016
+2 dzmitry bahdanau kyunghyun cho yoshua bengio neural machine translation jointly
+learning align translate corr abs14090473 2014
+3 denny britz anna goldie minhthang luong quoc v le massive exploration neural
+machine translation architectures corr abs170303906 2017
+4 jianpeng cheng li dong mirella lapata long shortterm memorynetworks machine
+reading arxiv preprint arxiv160106733 2016
+105 kyunghyun cho bart van merrienboer caglar gulcehre fethi bougares holger schwenk
+yoshua bengio learning phrase representations rnn encoderdecoder statistical
+machine translation corr abs14061078 2014
+6 francois chollet xception deep learning depthwise separable convolutions arxiv
+preprint arxiv161002357 2016
+7 junyoung chung çaglar gülçehre kyunghyun cho yoshua bengio empirical evaluation
+gated recurrent neural networks sequence modeling corr abs14123555 2014
+8 chris dyer adhiguna kuncoro miguel ballesteros noah smith recurrent neural
+network grammars proc naacl 2016
+9 jonas gehring michael auli david grangier denis yarats yann n dauphin convolu
+tional sequence sequence learning arxiv preprint arxiv170503122v2 2017
+10 alex graves generating sequences recurrent neural networks arxiv preprint
+arxiv13080850 2013
+11 kaiming xiangyu zhang shaoqing ren jian sun deep residual learning m
+age recognition proceedings ieee conference computer vision pattern
+recognition pages 770–778 2016
+12 sepp hochreiter yoshua bengio paolo frasconi jürgen schmidhuber gradient flow
+recurrent nets difficulty learning longterm dependencies 2001
+13 sepp hochreiter jürgen schmidhuber long shortterm memory neural computation
+981735–1780 1997
+14 zhongqiang huang mary harper selftraining pcfg grammars latent annotations
+languages proceedings 2009 conference empirical methods natural
+language processing pages 832–841 acl august 2009
+15 rafal jozefowicz oriol vinyals mike schuster noam shazeer yonghui wu exploring
+limits language modeling arxiv preprint arxiv160202410 2016
+16 łukasz kaiser samy bengio active memory replace attention advances neural
+information processing systems nips 2016
+17 łukasz kaiser ilya sutskever neural gpus learn algorithms international conference
+learning representations iclr 2016
+18 nal kalchbrenner lasse espeholt karen simonyan aaron van den oord alex graves ko
+ray kavukcuoglu neural machine translation linear timearxiv preprint arxiv161010099v2
+2017
+19 yoon kim carl denton luong hoang alexander m rush structured attention networks
+international conference learning representations 2017
+20 diederik kingma jimmy ba adam method stochastic optimization iclr 2015
+21 oleksii kuchaiev boris ginsburg factorization tricks lstm networks arxiv preprint
+arxiv170310722 2017
+22 zhouhan lin minwei feng cicero nogueira dos santos mo yu bing xiang bowen
+zhou yoshua bengio structured selfattentive sentence embedding arxiv preprint
+arxiv170303130 2017
+23 minhthang luong quoc v le ilya sutskever oriol vinyals lukasz kaiser multitask
+sequence sequence learning arxiv preprint arxiv151106114 2015
+24 minhthang luong hieu pham christopher d manning effective approaches attention
+based neural machine translation arxiv preprint arxiv150804025 2015
+1125 mitchell p marcus mary ann marcinkiewicz beatrice santorini building large annotated
+corpus english penn treebank computational linguistics 192313–330 1993
+26 david mcclosky eugene charniak mark johnson effective selftraining parsing
+proceedings human language technology conference naacl main conference
+pages 152–159 acl june 2006
+27 ankur parikh oscar täckström dipanjan das jakob uszkoreit decomposable attention
+model empirical methods natural language processing 2016
+28 romain paulus caiming xiong richard socher deep reinforced model abstractive
+summarization arxiv preprint arxiv170504304 2017
+29 slav petrov leon barrett romain thibaux dan klein learning accurate compact
+interpretable tree annotation proceedings 21st international conference
+computational linguistics 44th annual meeting acl pages 433–440 acl july
+2006
+30 ofir press lior wolf output embedding improve language models arxiv
+preprint arxiv160805859 2016
+31 rico sennrich barry haddow alexandra birch neural machine translation rare words
+subword units arxiv preprint arxiv150807909 2015
+32 noam shazeer azalia mirhoseini krzysztof maziarz andy davis quoc le geoffrey hinton
+jeff dean outrageously large neural networks sparselygated mixtureofexperts
+layer arxiv preprint arxiv170106538 2017
+33 nitish srivastava geoffrey e hinton alex krizhevsky ilya sutskever ruslan salakhutdi
+nov dropout simple way prevent neural networks overfitting journal machine
+learning research 1511929–1958 2014
+34 sainbayar sukhbaatar arthur szlam jason weston rob fergus endtoend memory
+networks c cortes n d lawrence d d lee m sugiyama r garnett editors
+advances neural information processing systems 28 pages 2440–2448 curran associates
+inc 2015
+35 ilya sutskever oriol vinyals quoc vv le sequence sequence learning neural
+networks advances neural information processing systems pages 3104–3112 2014
+36 christian szegedy vincent vanhoucke sergey ioffe jonathon shlens zbigniew wojna
+rethinking inception architecture computer vision corr abs151200567 2015
+37 vinyals kaiser koo petrov sutskever hinton grammar foreign language
+advances neural information processing systems 2015
+38 yonghui wu mike schuster zhifeng chen quoc v le mohammad norouzi wolfgang
+macherey maxim krikun yuan cao qin gao klaus macherey et al google neural machine
+translation system bridging gap human machine translation arxiv preprint
+arxiv160908144 2016
+39 jie zhou ying cao xuguang wang peng li wei xu deep recurrent models
+fastforward connections neural machine translation corr abs160604199 2016
+40 muhua zhu yue zhang wenliang chen min zhang jingbo zhu fast accurate
+shiftreduce constituent parsing proceedings 51st annual meeting acl v olume
+1 long papers pages 434–443 acl august 2013
+12attention visualizations
+inputinput layer5
+
+
+
+
+spirit
+
+
+majority
+
+american
+governments
+
+passed
+new
+laws
+
+2009
+making
+
+registration
+
+voting
+process
+
+difficult
+
+eos
+pad
+pad
+pad
+pad
+pad
+pad
+
+
+
+
+spirit
+
+
+majority
+
+american
+governments
+
+passed
+new
+laws
+
+2009
+making
+
+registration
+
+voting
+process
+
+difficult
+
+eos
+pad
+pad
+pad
+pad
+pad
+pad
+figure 3 example attention mechanism following longdistance dependencies
+encoder selfattention layer 5 6 attention heads attend distant dependency
+verb ‘ making ’ completing phrase ‘ makingmore difficult ’ attentions shown
+word ‘ making ’ different colors represent different heads best viewed color
+13inputinput layer5
+
+law
+
+
+
+perfect
+
+
+
+application
+
+
+
+
+
+
+
+
+
+missing
+
+
+
+opinion
+
+eos
+pad
+
+law
+
+
+
+perfect
+
+
+
+application
+
+
+
+
+
+
+
+
+
+missing
+
+
+
+opinion
+
+eos
+pad
+inputinput layer5
+
+law
+
+
+
+perfect
+
+
+
+application
+
+
+
+
+
+
+
+
+
+missing
+
+
+
+opinion
+
+eos
+pad
+
+law
+
+
+
+perfect
+
+
+
+application
+
+
+
+
+
+
+
+
+
+missing
+
+
+
+opinion
+
+eos
+pad
+figure 4 attention heads layer 5 6 apparently involved anaphora resolution
+attentions head 5 isolated attentions word ‘ ’ attention heads 5
+6 note attentions sharp word
+14inputinput layer5
+
+law
+
+
+
+perfect
+
+
+
+application
+
+
+
+
+
+
+
+
+
+missing
+
+
+
+opinion
+
+eos
+pad
+
+law
+
+
+
+perfect
+
+
+
+application
+
+
+
+
+
+
+
+
+
+missing
+
+
+
+opinion
+
+eos
+pad
+inputinput layer5
+
+law
+
+
+
+perfect
+
+
+
+application
+
+
+
+
+
+
+
+
+
+missing
+
+
+
+opinion
+
+eos
+pad
+
+law
+
+
+
+perfect
+
+
+
+application
+
+
+
+
+
+
+
+
+
+missing
+
+
+
+opinion
+
+eos
+pad
+figure 5 attention heads exhibit behaviour related structure
+sentence examples different heads encoder selfattention
+layer 5 6 heads clearly learned perform different tasks
+15

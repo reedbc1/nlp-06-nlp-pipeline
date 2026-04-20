@@ -35,8 +35,8 @@ Then edit your copied Python file to:
 # ============================================================
 
 import logging
-
 from bs4 import BeautifulSoup
+import re
 
 # ============================================================
 # Section 2. Define Run Validate Function
@@ -44,67 +44,28 @@ from bs4 import BeautifulSoup
 
 
 def run_validate(
-    html_content: str,
     LOG: logging.Logger,
-) -> BeautifulSoup:
-    """Inspect and validate HTML structure.
+    text_path
+):
+    headings = []
+    pattern = r'^(?:\d+(?:\.\d+)?\s+(?=.*[A-Za-z]).+|Abstract|References)$'
 
-    Args:
-        html_content (str): The raw HTML content from the Extract stage.
-        LOG (logging.Logger): The logger instance.
+    with open(text_path, "r", encoding="utf-8") as file:
+        for line in file:
+            if bool(re.match(pattern, line)):
+                headings.append(line)
 
-    Returns:
-        BeautifulSoup: The validated BeautifulSoup object.
-    """
-    LOG.info("========================")
-    LOG.info("STAGE 02: VALIDATE starting...")
-    LOG.info("========================")
+    cleaned_headings = [text.replace("\n", "") for text in headings]
+    LOG.info(f"Returned headings: {cleaned_headings}")
 
-    # ============================================================
-    # INSPECT HTML STRUCTURE
-    # ============================================================
-
-    LOG.info("HTML STRUCTURE INSPECTION:")
-
-    # Parse the HTML content using BeautifulSoup
-    soup = BeautifulSoup(html_content, "html.parser")
-
-    # Log the type of the top-level HTML structure.
-    LOG.info(f"Top-level type: {type(soup).__name__}")
-
-    # Log the top-level elements in the HTML document
-    LOG.info(
-        f"Top-level elements: {[element.name for element in soup.find_all(recursive=False)]}"
-    )
-
-    # ============================================================
-    # VALIDATE EXPECTATIONS
-    # ============================================================
-
-    # Check for expected structural elements
-    title = soup.find("h1", class_="title")
-    authors = soup.find("div", class_="authors")
-    abstract = soup.find("blockquote", class_="abstract")
-    subjects = soup.find("div", class_="subheader")
-    dateline = soup.find("div", class_="dateline")
-
-    LOG.info("VALIDATE: Title found: %s", title is not None)
-    LOG.info("VALIDATE: Authors found: %s", authors is not None)
-    LOG.info("VALIDATE: Abstract found: %s", abstract is not None)
-    LOG.info("VALIDATE: Subjects found: %s", subjects is not None)
-    LOG.info("VALIDATE: Dateline found: %s", dateline is not None)
+    is_abstract = True if "Abstract" in cleaned_headings else None
+    is_references = True if "References" in cleaned_headings else None
 
     missing = []
-    if not title:
+    if not is_abstract:
         missing.append("title")
-    if not authors:
+    if not is_references:
         missing.append("authors")
-    if not abstract:
-        missing.append("abstract")
-    if not subjects:
-        missing.append("subjects")
-    if not dateline:
-        missing.append("dateline")
 
     if missing:
         raise ValueError(
@@ -113,7 +74,5 @@ def run_validate(
         )
 
     LOG.info("VALIDATE: HTML structure is valid.")
-    LOG.info("Sink: validated BeautifulSoup object")
 
-    # Return the validated BeautifulSoup object for use in the next stage.
-    return soup
+    return headings, cleaned_headings

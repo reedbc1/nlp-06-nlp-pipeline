@@ -51,7 +51,6 @@ from nlp.config_reed import (
     PAGE_URL,
     PROCESSED_CSV_PATH,
     PROCESSED_PATH,
-    RAW_HTML_PATH,
     RAW_PATH,
     ROOT_PATH,
 )
@@ -89,7 +88,7 @@ def main() -> None:
     html_content = run_extract(
         source_url=PAGE_URL,
         http_request_headers=HTTP_REQUEST_HEADERS,
-        raw_html_path=RAW_HTML_PATH,
+        pdf_path=PDF_PATH,
         LOG=LOG,
     )
 
