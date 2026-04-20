@@ -33,7 +33,7 @@ from pathlib import Path
 # API CONFIGURATION
 # ============================================================
 
-PAGE_URL: str = "https://arxiv.org/abs/1706.03762"
+PAGE_URL: str = "https://arxiv.org/pdf/1706.03762"
 
 # Let them know who we are (and that we're doing educational web mining).
 HTTP_REQUEST_HEADERS: dict = {
@@ -49,5 +49,5 @@ DATA_PATH: Path = ROOT_PATH / "data"
 RAW_PATH: Path = DATA_PATH / "raw"
 PROCESSED_PATH: Path = DATA_PATH / "processed"
 
-RAW_HTML_PATH: Path = RAW_PATH / "reed_raw.html"
+RAW_HTML_PATH: Path = RAW_PATH / "reed_raw.pdf"
 PROCESSED_CSV_PATH: Path = PROCESSED_PATH / "reed_processed.csv"

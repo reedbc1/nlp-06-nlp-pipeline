@@ -481,3 +481,69 @@
 2026-04-19 15:30:28 | INFO | CI | ========================
 2026-04-19 15:30:28 | INFO | CI | Pipeline executed successfully!
 2026-04-19 15:30:28 | INFO | CI | ========================
+2026-04-20 03:19:56 | INFO | CI | === RUN START ===
+2026-04-20 03:19:56 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 03:19:56 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 03:19:56 | INFO | CI | python=3.14.2
+2026-04-20 03:19:56 | INFO | CI | os=Windows 11
+2026-04-20 03:19:56 | INFO | CI | shell=powershell
+2026-04-20 03:19:56 | INFO | CI | cwd=.
+2026-04-20 03:19:56 | INFO | CI | github_actions=False
+2026-04-20 03:19:56 | INFO | CI | START PIPELINE
+2026-04-20 03:19:56 | INFO | CI | ROOT_PATH = .
+2026-04-20 03:19:56 | INFO | CI | DATA_PATH = data
+2026-04-20 03:19:56 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 03:19:56 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 03:19:56 | INFO | CI | ========================
+2026-04-20 03:19:56 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 03:19:56 | INFO | CI | ========================
+2026-04-20 03:19:56 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/abs/1706.03762
+2026-04-20 03:19:56 | INFO | CI | SOURCE URL = https://arxiv.org/abs/1706.03762
+2026-04-20 03:19:56 | INFO | CI | SINK PATH = data\raw\reed_raw.html
+2026-04-20 03:19:56 | INFO | CI | ========================
+2026-04-20 03:19:56 | INFO | CI | Pipeline executed successfully!
+2026-04-20 03:19:56 | INFO | CI | ========================
+2026-04-20 03:20:51 | INFO | CI | === RUN START ===
+2026-04-20 03:20:51 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 03:20:51 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 03:20:51 | INFO | CI | python=3.14.2
+2026-04-20 03:20:51 | INFO | CI | os=Windows 11
+2026-04-20 03:20:51 | INFO | CI | shell=powershell
+2026-04-20 03:20:51 | INFO | CI | cwd=.
+2026-04-20 03:20:51 | INFO | CI | github_actions=False
+2026-04-20 03:20:51 | INFO | CI | START PIPELINE
+2026-04-20 03:20:51 | INFO | CI | ROOT_PATH = .
+2026-04-20 03:20:51 | INFO | CI | DATA_PATH = data
+2026-04-20 03:20:51 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 03:20:51 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 03:20:51 | INFO | CI | ========================
+2026-04-20 03:20:51 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 03:20:51 | INFO | CI | ========================
+2026-04-20 03:20:51 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 03:20:52 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 03:20:52 | INFO | CI | SINK PATH = data\raw\reed_raw.text
+2026-04-20 03:20:52 | INFO | CI | ========================
+2026-04-20 03:20:52 | INFO | CI | Pipeline executed successfully!
+2026-04-20 03:20:52 | INFO | CI | ========================
+2026-04-20 03:22:07 | INFO | CI | === RUN START ===
+2026-04-20 03:22:07 | INFO | CI | project=Module 6: EVTAL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-20 03:22:07 | INFO | CI | repo_dir=nlp-06-nlp-pipeline
+2026-04-20 03:22:07 | INFO | CI | python=3.14.2
+2026-04-20 03:22:07 | INFO | CI | os=Windows 11
+2026-04-20 03:22:07 | INFO | CI | shell=powershell
+2026-04-20 03:22:07 | INFO | CI | cwd=.
+2026-04-20 03:22:07 | INFO | CI | github_actions=False
+2026-04-20 03:22:07 | INFO | CI | START PIPELINE
+2026-04-20 03:22:07 | INFO | CI | ROOT_PATH = .
+2026-04-20 03:22:07 | INFO | CI | DATA_PATH = data
+2026-04-20 03:22:07 | INFO | CI | RAW_PATH = data\raw
+2026-04-20 03:22:07 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-20 03:22:07 | INFO | CI | ========================
+2026-04-20 03:22:07 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-20 03:22:07 | INFO | CI | ========================
+2026-04-20 03:22:07 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/pdf/1706.03762
+2026-04-20 03:22:08 | INFO | CI | SOURCE URL = https://arxiv.org/pdf/1706.03762
+2026-04-20 03:22:08 | INFO | CI | SINK PATH = data\raw\reed_raw.pdf
+2026-04-20 03:22:08 | INFO | CI | ========================
+2026-04-20 03:22:08 | INFO | CI | Pipeline executed successfully!
+2026-04-20 03:22:08 | INFO | CI | ========================
