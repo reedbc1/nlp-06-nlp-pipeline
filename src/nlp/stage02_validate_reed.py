@@ -35,7 +35,6 @@ Then edit your copied Python file to:
 # ============================================================
 
 import logging
-from bs4 import BeautifulSoup
 import re
 
 # ============================================================
@@ -43,14 +42,11 @@ import re
 # ============================================================
 
 
-def run_validate(
-    LOG: logging.Logger,
-    text_path
-):
+def run_validate(LOG: logging.Logger, text_path):
     headings = []
     pattern = r'^(?:\d+(?:\.\d+)?\s+(?=.*[A-Za-z]).+|Abstract|References)$'
 
-    with open(text_path, "r", encoding="utf-8") as file:
+    with open(text_path, encoding="utf-8") as file:
         for line in file:
             if bool(re.match(pattern, line)):
                 headings.append(line)

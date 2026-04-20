@@ -121,7 +121,6 @@ import logging
 import re
 import string
 
-from bs4 import BeautifulSoup, Tag
 import pandas as pd
 import spacy
 
@@ -191,11 +190,7 @@ def _clean_text(text: str, nlp_model: spacy.language.Language) -> str:
 
 
 def run_transform(
-    LOG: logging.Logger,
-    text_path,
-    cleaned_text_path,
-    headings,
-    cleaned_headings
+    LOG: logging.Logger, text_path, cleaned_text_path, headings, cleaned_headings
 ):
 
     # divide text into sections by header
@@ -203,7 +198,7 @@ def run_transform(
     for heading in cleaned_headings:
         sections[heading] = ""
 
-    with open(text_path, "r", encoding="utf-8") as file:
+    with open(text_path, encoding="utf-8") as file:
         i = 0
         start_adding = False
         max_idx = len(headings) - 1
