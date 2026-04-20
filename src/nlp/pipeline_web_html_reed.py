@@ -51,6 +51,7 @@ from nlp.config_reed import (
     HTTP_REQUEST_HEADERS,
     PAGE_URL,
     PDF_PATH,
+    PROCESSED_CSV_PATH,
     PROCESSED_PATH,
     RAW_PATH,
     ROOT_PATH,
@@ -60,6 +61,7 @@ from nlp.stage01_extract_reed import run_extract
 from nlp.stage02_validate_reed import run_validate
 from nlp.stage03_transform_reed import run_transform
 from nlp.stage04_analyze_reed import run_analyze
+from nlp.stage05_load import run_load
 
 # ============================================================
 # Section 2. Configure Logging
@@ -113,12 +115,12 @@ def main() -> None:
         LOG=LOG,
     )
 
-    # # LOAD
-    # run_load(
-    #     df=df,
-    #     processed_csv_path=PROCESSED_CSV_PATH,
-    #     LOG=LOG,
-    # )
+    # LOAD
+    run_load(
+        df=df,
+        processed_csv_path=PROCESSED_CSV_PATH,
+        LOG=LOG,
+    )
 
     LOG.info("========================")
     LOG.info("Pipeline executed successfully!")
