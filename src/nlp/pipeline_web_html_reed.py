@@ -80,7 +80,8 @@ def main() -> None:
     # html_content = run_extract(
     #     source_url=PAGE_URL,
     #     http_request_headers=HTTP_REQUEST_HEADERS,
-    #     raw_html_path=RAW_HTML_PATH,
+    #     pdf_path=PDF_PATH,
+    #     text_path=TEXT_PATH,
     #     LOG=LOG,
     # )
 

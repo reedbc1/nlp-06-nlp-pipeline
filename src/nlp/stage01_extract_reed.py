@@ -24,6 +24,7 @@ import logging
 from pathlib import Path
 
 from datafun_toolkit.logger import log_path
+from pypdf import PdfReader
 import requests
 
 # ============================================================
@@ -34,9 +35,10 @@ import requests
 def run_extract(
     source_url: str,
     http_request_headers: dict,
-    raw_html_path: Path,
+    pdf_path: Path,
+    text_path: Path,
     LOG: logging.Logger,
-) -> str:
+):
     """Extract HTML data from the web page and save it to a file.
 
     Args:
@@ -67,14 +69,36 @@ def run_extract(
     # and raise an exception if the request was unsuccessful.
     response.raise_for_status()
 
+    with Path.open(pdf_path, "wb") as file:
+        file.write(response.content)
+
+    # creating a pdf reader object
+    reader = PdfReader(pdf_path)
+
+    num_pages = len(reader.pages)
+
+    # remove text file if already exists
+    if Path.exists(text_path):
+        Path.unlink(text_path)
+
+    # write all pdf text to file
+    for i in range(num_pages):
+        page = reader.pages[i]
+
+        # extracting text from page
+        text = page.extract_text()
+
+        with Path.open(text_path, "a", encoding="utf-8") as file:
+            file.write(text)
+
     # Use the .text attribute of the response object to get the HTML content
     # and store it in a variable called html_content.
-    html_content: str = response.text
+    # html_content: str = response.text
 
     # Use the write_text() method of the raw_html_path to
     # save the raw HTML data to a file.
     # Specify the encoding as "utf-8" to ensure proper handling of special characters.
-    raw_html_path.write_text(html_content, encoding="utf-8")
+    # raw_html_path.write_text(html_content, encoding="utf-8")
 
     # Use log.info() to log the source URL (a string).
     # Use a formatted string (f-string) to include the variable in the log message.
@@ -82,7 +106,7 @@ def run_extract(
 
     # Use the privacy-conscious
     # log_path function to log the sink path.
-    log_path(LOG, "SINK PATH", raw_html_path)
+    log_path(LOG, "SINK PATH", text_path)
 
     # Return the extracted HTML content as a string.
-    return html_content
+    # return html_content

@@ -48,6 +48,6 @@ ROOT_PATH: Path = Path.cwd()
 DATA_PATH: Path = ROOT_PATH / "data"
 RAW_PATH: Path = DATA_PATH / "raw"
 PROCESSED_PATH: Path = DATA_PATH / "processed"
-
-RAW_HTML_PATH: Path = RAW_PATH / "reed_raw.pdf"
+PDF_PATH: Path = RAW_PATH / "reed_raw.pdf"
+TEXT_PATH: Path = RAW_PATH / "reed_raw.txt"
 PROCESSED_CSV_PATH: Path = PROCESSED_PATH / "reed_processed.csv"
