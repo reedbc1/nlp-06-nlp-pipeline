@@ -17,7 +17,7 @@ Sources analyzed include the following:
 - Parsed HTML with BeautifulSoup library
 
 ### APIs
-- Used Python Requests library to fetch JSON data
+- Made GET requests to fetch JSON data from API endpoints
 
 ### Documents
 - Utilized pypdf to extract text from PDF
