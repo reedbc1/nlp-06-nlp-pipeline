@@ -38,7 +38,7 @@ Uses the X API to capture most recent tweets that contain "AI" and identifies to
 ### [PDF Parsing Pipeline](https://github.com/reedbc1/nlp-06-nlp-pipeline)
 Modified an existing pipeline to take PDFs from arxiv as the input. Headings are parsed to divide the paper by headings so that frequencies for different sections can be compared.
 
-### 7. Skills
+## 7. Skills
 - Utilize different APIs to retrieve data in JSON format
 - Use Python Requests library for web scraping
 - Parse returned data into tokens for analysis
