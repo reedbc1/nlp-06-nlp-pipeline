@@ -1,5 +1,5 @@
-
-
+# NLP Portfolio
+This portfolio summarizes various skills learned and used in projects throughout the course.
 
 ## 1. NLP Techniques Implemented
 
