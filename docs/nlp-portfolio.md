@@ -13,38 +13,34 @@
 Sources analyzed include the following:
 
 ### Web pages
+- Used Python Requests library to fetch HTML
+- Parsed HTML with BeautifulSoup library
 
 ### APIs
+- Used Python Requests library to fetch JSON data
 
 ### Documents
-Differences in structure (HTML, JSON, plain text)
-How you handled or cleaned messy or variable data
+- Utilized pypdf to extract text from PDF
 
-3. Pipeline Structure (EVTL)
-Describe your pipeline using EVTL:
+## 3. Pipeline Structure (EVTL)
 
-Extract (from source): how data was collected
-Validate: structure/content checks performed
-Transform: NLP processing steps
-Load (to sink): outputs (files, summaries, visualizations)
+- **Extract** - Fetch data from source
+- **Validate** - Check that data structure is as expected
+- **Transform** - Perform NLP processing steps, including tokenization and finding token counts
+- **Load (to sink)** - Create outputs, inlcuding csv file of transformed data and image files containing graphs (histogram, word cloud)
 
-4. Signals and Analysis Methods
-Describe what you computed and how:
+## 4. Signals and Analysis Methods
+- Word frequency: computed token totals to identify most common keywords in corpus
+- Co-occurrence (bigrams): found most common repeating pairs of words, giving more information about context
 
-word frequency
-context or co-occurrence
-keyword extraction
-special signals
-sentiment or subjectivity
-
-5. Insights
+## 5. Insights
 Describe what your analysis revealed:
 
 patterns, trends, or notable findings
 anything surprising or unexpected
 what made the results useful or meaningful
 
-6. Representative Work
+1. Representative Work
 Provide links to 2–3 of your strongest projects.
 
 For each project:
