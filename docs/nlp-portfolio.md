@@ -35,12 +35,10 @@ Sources analyzed include the following:
 
 ## 5. Insights
 Describe what your analysis revealed:
+- Frequency from X API of the word "you"
+- Frequency from word cloud for abstract of arxiv paper
 
-patterns, trends, or notable findings
-anything surprising or unexpected
-what made the results useful or meaningful
-
-1. Representative Work
+## 6. Representative Work
 Provide links to 2–3 of your strongest projects.
 
 For each project:
@@ -48,13 +46,15 @@ For each project:
 include a clickable link
 provide 1–2 sentences describing what it does and why it is representative
 
-7. Skills
-Be explicit about what you can do. Avoid general statements.
+### X API Data Extraction and Analysis 
+- Project 2
 
-Examples:
+### PDF Parsing Pipeline
+- Project 6
 
-Python data processing
-working with text data
-handling messy or inconsistent inputs
-structuring repeatable pipelines
-communicating results professionally with Markdown and visuals
+### 7. Skills
+- Utilize many different APIs to retrieve data in JSON format
+- Use Python Requests library for web scraping
+- Parse returned data into tokens for analysis
+- Generate visualizations for token frequency
+- Communcate results via console logging and markdown text
