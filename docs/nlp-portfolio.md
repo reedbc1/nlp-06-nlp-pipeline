@@ -3,8 +3,8 @@ This portfolio summarizes various skills learned and used in projects throughout
 
 ## 1. NLP Techniques Implemented
 
-- **Converting text to tokens** by splitting on spaces, removing punctuation and leading spaces, removing stop words, and converting text to lowercase. [nlp-02-text-processing]()
-- **Frequency analysis** of individual tokens and bigrams using tables and histograms [nlp-03-text-exploration]()
+- **Converting text to tokens** by splitting on spaces, removing punctuation and leading spaces, removing stop words, and converting text to lowercase. ([nlp-02-text-processing]())
+- **Frequency analysis** of individual tokens and bigrams using tables and histograms. ([nlp-03-text-exploration]())
 - **API-based text analysis (and JSON)** using X API to extract X posts and potterapi to gather a list of Harry Potter spells and their descriptions. 2nd and 4th projects
 - **Web scraping / content extraction from HTML** using the Python Requests library to retrieve the HTML and Beautifulsoup for parsing. See [nlp-01-getting-started](https://github.com/reedbc1/nlp-01-getting-started) for Wikipedia articles and [nlp-05-web-documents](https://github.com/reedbc1/nlp-05-web-documents) for working with arxiv paper abstracts.
 
