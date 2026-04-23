@@ -25,20 +25,19 @@ This portfolio summarizes various skills learned and used in projects throughout
 - Word frequency: computed token totals to identify most common keywords in corpus
 - Co-occurrence (bigrams): found most common repeating pairs of words, giving more information about context
 
-## 5. Insights
-Describe what your analysis revealed:
-- Frequency from X API of the word "you"
-- Frequency from word cloud for abstract of arxiv paper
-
-## 6. Representative Work
+## 5. Representative Work
 
 ### [X API Data Extraction and Analysis](https://github.com/reedbc1/nlp-02-text-preprocessing)
-Uses the X API to capture most recent tweets that contain "AI" and identifies tokens with the highest frequency.
+Uses the X API to capture most recent tweets that contain "AI" and identifies tokens with the highest frequency.  
+
+**Insights:** Posts did not have many keywords related to AI in common, but words related to addressing an audience, such as "you", were much more common.
 
 ### [PDF Parsing Pipeline](https://github.com/reedbc1/nlp-06-nlp-pipeline)
-Modified an existing pipeline to take PDFs from arxiv as the input. Headings are parsed to divide the paper by headings so that frequencies for different sections can be compared.
+Modified an existing pipeline to take PDFs from arxiv as the input. Headings are parsed to divide the paper by headings so that frequencies for different sections can be compared.  
 
-## 7. Skills
+**Insights:** As one would expect, words related to the paper's domain were common. Further work can be done to verify that the pipeline also works for arxiv PDFs of varying formats.
+
+## 6. Skills
 - Utilize different APIs to retrieve data in JSON format
 - Use Python Requests library for web scraping
 - Parse returned data into tokens for analysis
